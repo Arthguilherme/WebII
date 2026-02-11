@@ -1,0 +1,53 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.fundo{
+    background-image: url('images/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh;
+}
+          
+
+#caixa{
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    border: 3px solid white;
+    margin-left: 10px; 
+    margin-top: 10px;
+    box-shadow: 3px 3px 5px white;
+}
+
+#relogio{
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+#alien{
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+#nave{
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.fonte{
+    display: inline-block;
+    justify-content: center;
+    padding-left: 30px; ;
+    font-family: 'times new roman', times, serif;
+    color: white;
+    margin-left: 15px;
+    margin-top: 15px;
+}
