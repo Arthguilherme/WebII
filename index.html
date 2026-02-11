@@ -1,34 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Space Invaders</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="fundo">
-        
-        <div id="caixa"> 
-            
-            <ul>
-                <li>
-                    <img src="images\clock.png" alt="Imagem do relogio" id="relogio">
-                    <h4></h4>
-                </li>
-                <li>
-                    <img src="images\nave.png" alt="imagem da nave" id="nave">
-                    <h4 class="fonte">Life: </h4>
-                </li>
-                <li>
-                    <img src="images\alien.png" alt="Imagem do alien" id="alien">
-                    <h4 class="fonte"> Alien: </h4>
-                </li>
-            </ul>
-           
+
+    <div class="container">
+
+        <div class="fundo">
+
+            <div id="menu">
+
+                <ul>
+                    <li>
+                        <img src="images\clock.png" alt="Imagem do relogio" id="icone_relogio">
+                        <h4 class="fonte"> <span id="tempo">00:00:00</span></h4>
+                    </li>
+                    <li>
+                        <img src="images\nave.png" alt="imagem da nave" id="icone_nave">
+                        <h4 class="fonte">Life: <span id="vida">3</span> </h4>
+                        
+                    </li>
+                    <li>
+                        <img src="images\alien.png" alt="Imagem do alien" id="icone_alien">
+                        <h4 class="fonte"> Alien: <span id="inimigo">3</span></h4>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="nave">
+                <img src="images\nave.png" alt="Imagem da Nave " id="nave">
+            </div>
 
         </div>
-
     </div>
+
+    <script src="spaceInvaders.js"></script>
 </body>
+
 </html>
