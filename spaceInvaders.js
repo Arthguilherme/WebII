@@ -19,3 +19,29 @@ document.onkeypress = function (e) {
         img.style.left = posicao + 'px';
     }
 };
+
+// Timer - Variáveis
+let tempoSegundos = 0;
+let intervalo;
+
+// Função para formatar tempo em HH:MM:SS
+function formatarTempo(segundos) {
+    let horas = Math.floor(segundos / 3600);
+    let minutos = Math.floor((segundos % 3600) / 60);
+    let segs = segundos % 60;
+    
+    return String(horas).padStart(2, '0') + ':' + 
+           String(minutos).padStart(2, '0') + ':' + 
+           String(segs).padStart(2, '0');
+}
+
+// Função para iniciar o timer
+function startCounter() {
+    intervalo = setInterval(function() {
+        tempoSegundos++;
+        document.getElementById('tempo').textContent = formatarTempo(tempoSegundos);
+    }, 1000); // Atualiza a cada 1000ms (1 segundo)
+}
+
+    
+    
