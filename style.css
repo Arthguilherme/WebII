@@ -116,11 +116,10 @@ body {
     z-index: 50;
     pointer-events: none;
 }
-#icone_missil {
+.missil {
     position: absolute;
     width: 10px;
     height: 20px;
-    pointer-events: none; 
-    z-index: 90; 
-
+    pointer-events: none;
+    z-index: 90;
 }
