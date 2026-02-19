@@ -1,28 +1,34 @@
 const nave = document.querySelector('#nave');
-let posicao = window.innerWidth / 2 - 50; // centro
+let posicao = window.innerWidth / 2 - 50; 
 nave.style.left = posicao + 'px';
 nave.style.bottom = '10px'
 
 document.onkeydown = function(event) {
+    if(isPaused) return;
+    
     if(event.key === 'ArrowLeft' || event.key === 'a' || event.key === 'A') {
-        posicao = Math.max(0, posicao - 20); // limita esquerda
+        posicao = Math.max(0, posicao - 20); 
         nave.style.left = posicao + 'px';
     }
 
     if(event.key === 'ArrowRight' || event.key === 'd' || event.key === 'D') {
-        posicao = Math.min(window.innerWidth - 100, posicao + 20); // limita direita
+        posicao = Math.min(window.innerWidth - 100, posicao + 20); 
         nave.style.left = posicao + 'px';
+    }
+
+    if(event.key === ' ' || event.key === 'z' || event.key === 'Z'){
+        dispararMissil();
     }
 };
 
 
-// Timer - Variáveis
 let tempoSegundos = 0;
 let intervalo;
+let isPaused = false;
+const fundo = document.querySelector('.fundo');
 
-// Função para formatar tempo em HH:MM:SS
 function formatarTempo(segundos) {
-    let horas = Math.floor(segundos / 3600);
+    let horas = Math.floor(segundos / 3600); 
     let minutos = Math.floor((segundos % 3600) / 60);
     let segs = segundos % 60;
     
@@ -31,13 +37,49 @@ function formatarTempo(segundos) {
            String(segs).padStart(2, '0');
 }
 
-// Função para iniciar o timer
 function startCounter() {
     intervalo = setInterval(function() {
         tempoSegundos++;
         document.getElementById('tempo').textContent = formatarTempo(tempoSegundos);
-    }, 1000); // Atualiza a cada 1000ms (1 segundo)
+    }, 1000); 
 }
 
+function togglePause() {
+    isPaused = !isPaused;
     
-    
+    if(isPaused) {
+        clearInterval(intervalo);
+        fundo.classList.add('paused');
+    } else {
+        startCounter();
+        fundo.classList.remove('paused');
+    }
+}
+
+function stopcounter() {
+    clearInterval(intervalo);
+}
+
+function dispararMissil() {
+    const missil = document.createElement('img');
+    missil.src = 'images/missil.png';
+    missil.classList.add('missil');
+    fundo.appendChild(missil);
+
+    const naveRect = nave.getBoundingClientRect();
+    missil.style.left = (naveRect.left + naveRect.width/2 - 5) + 'px';
+    missil.style.top = (naveRect.top - 20) + 'px';
+
+    // movimento do míssil
+    let intervaloMissil = setInterval(() => {
+        if(isPaused) return; // pausa o míssil
+        let topAtual = parseInt(missil.style.top);
+        if(topAtual <= -20) {
+            // chegou no topo, remove
+            clearInterval(intervaloMissil);
+            missil.remove();
+        } else {
+            missil.style.top = (topAtual - 10) + 'px';
+        }
+    }, 30); // atualiza a cada 30ms
+}
