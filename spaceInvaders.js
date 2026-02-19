@@ -1,24 +1,20 @@
-// Inicializar posição da nave
 const nave = document.querySelector('#nave');
-let posicao = window.innerWidth / 2 - 50; // Centro da tela
+let posicao = window.innerWidth / 2 - 50; // centro
 nave.style.left = posicao + 'px';
+nave.style.bottom = '10px'
 
-// Movimento da nave com onkeypress
-document.onkeypress = function (e) {
-    let img = document.querySelector('#nave');
-    
-    // Tecla 'A' ou 'a' - Move para esquerda
-    if (e.key == 'a' || e.key == 'A') {
-        posicao = Math.max(0, posicao - 20);
-        img.style.left = posicao + 'px';
+document.onkeydown = function(event) {
+    if(event.key === 'ArrowLeft' || event.key === 'a' || event.key === 'A') {
+        posicao = Math.max(0, posicao - 20); // limita esquerda
+        nave.style.left = posicao + 'px';
     }
-    
-    // Tecla 'D' ou 'd' - Move para direita
-    if (e.key == 'd' || e.key == 'D') {
-        posicao = Math.min(window.innerWidth - 100, posicao + 20);
-        img.style.left = posicao + 'px';
+
+    if(event.key === 'ArrowRight' || event.key === 'd' || event.key === 'D') {
+        posicao = Math.min(window.innerWidth - 100, posicao + 20); // limita direita
+        nave.style.left = posicao + 'px';
     }
 };
+
 
 // Timer - Variáveis
 let tempoSegundos = 0;
