@@ -16,7 +16,7 @@ document.onkeydown = function (event) {
         nave.style.left = posicao + 'px';
     }
 
-    if (event.key === ' ' || event.key === 'z' || event.key === 'Z') {
+    if (event.key === 'm' || event.key === 'M') {
         dispararMissil();
     }
 };
