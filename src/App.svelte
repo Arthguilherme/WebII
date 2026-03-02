@@ -2,6 +2,7 @@
     import { evaluate } from "mathjs";
 
     let visor = "";
+    //teste
 
     function handleClick(valor) {
         if (valor === "C") {
